@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en-en">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.52 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="author" content="Hugo VINCENT">
+<meta name="keywords" content=", blog, hacking, Privacy, vie-privée, insa, cybersecurity, infosec, hack">
+<meta name="description" content="Introduction Savez vous que google lit vos emails, que google traque votre position à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus.">
+
+
+<meta property="og:description" content="Introduction Savez vous que google lit vos emails, que google traque votre position à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Part 1 : Get back your privacy">
+<meta name="twitter:title" content="Part 1 : Get back your privacy">
+<meta property="og:url" content="http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+<meta property="twitter:url" content="http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+<meta property="og:site_name" content="Hugo">
+<meta property="og:description" content="Introduction Savez vous que google lit vos emails, que google traque votre position à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus.">
+<meta name="twitter:description" content="Introduction Savez vous que google lit vos emails, que google traque votre position à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2018-12-09T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2018-12-09T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="posts">
+    
+  
+  
+    
+      <meta property="article:tag" content="privacy">
+    
+      <meta property="article:tag" content="duckduckgo">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="http://192.168.0.24:8000/images/privacy-part1/thumbnail.png">
+  <meta property="twitter:image" content="http://192.168.0.24:8000/images/privacy-part1/thumbnail.png">
+
+
+  <meta property="og:image" content="http://192.168.0.24:8000/images/privacy-part1/cover.jpg">
+  <meta property="twitter:image" content="http://192.168.0.24:8000/images/privacy-part1/cover.jpg">
+
+
+
+
+  <meta property="og:image" content="http://192.168.0.24:8000/images/profil.jpg">
+  <meta property="twitter:image" content="http://192.168.0.24:8000/images/profil.jpg">
+
+
+    <title>Part 1 : Get back your privacy</title>
+
+    <link rel="icon" href="http://192.168.0.24:8000/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="http://192.168.0.24:8000/css/style-nnm2spxvve8onlujjlegkkytaehyadd4ksxc1hyzzq9a2wvtrgbljqyulomn.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="http://192.168.0.24:8000/css/mystyle.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://192.168.0.24:8000/">Hugo</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://192.168.0.24:8000/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="http://192.168.0.24:8000/images/profil.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="http://192.168.0.24:8000/#about">
+          <img class="sidebar-profile-picture" src="http://192.168.0.24:8000/images/profil.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Hugo VINCENT</h4>
+        
+          <h5 class="sidebar-profile-bio">Student in computer security</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://192.168.0.24:8000/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://192.168.0.24:8000/categories/posts">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Posts</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://192.168.0.24:8000/categories/write-ups">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Write-Ups</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://192.168.0.24:8000/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://192.168.0.24:8000/categories/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Hug0Vincent" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.root-me.org/hugow?lang=fr#70a472fd3f9279cb9095ce7cbd2cad00" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon rootme_logo "></i>
+      
+      <span class="sidebar-button-desc">Root-me</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/hugow_vincent" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.instagram.com/hugo_vincent__/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-instagram "></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              post-header-cover--full"
+       style="background-image:url('/images/privacy-part1/cover.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Part 1 : Get back your privacy
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-12-09T00:00:00Z">
+        
+  December 9, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://192.168.0.24:8000/categories/posts">posts</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Savez vous que google lit vos <a href="https://www.theguardian.com/technology/2013/aug/14/google-gmail-users-privacy-email-lawsuit">emails</a>, que google traque votre <a href="https://www.theguardian.com/technology/2013/aug/14/google-gmail-users-privacy-email-lawsuit">position</a> à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus. Ces outils iront des plus simples aux plus compliqués. Ce premier article abordera des outils très simples à utiliser pour garder votre vie privé privé. Vous pouvez cliquer sur chaque image pour obtenir le lien d&rsquo;installation ou plus de détails.</p>
+
+<h1 id="firefox">Firefox</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://firefox.com" data-fancybox-group="group:travel">
+  
+    <img class="fig-img" src="http://192.168.0.24:8000/images/privacy-part1/firefox.png" style="width: 300px;height: 300px;">
+  
+    </a>
+  
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>Si Firefox n&rsquo;est pas votre navigateur par défaut commencez par l&rsquo;installer. Firefox vas vous permettre d&rsquo;installer beaucoup de pluggings vous permettant de rester plus discret sur internet.</p>
+
+<hr />
+
+<h1 id="duckduckgo">DuckDuckGo</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://firefox.com" data-fancybox-group="group:travel">
+  
+    <img class="fig-img" src="http://192.168.0.24:8000/images/privacy-part1/duckduckgo.png" style="width: 300px;height: 300px;">
+  
+    </a>
+  
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>Contrairement à Google ou à d&rsquo;autres moteurs de recherche DuckDuckGo ne vous espionne pas. Ce moteur de recherche ne conserve pas vos données personnelles, de plus il ne conserve pas votre historique, il ne peut donc rien vendre aux annonceurs qui vous pistent sur internet.</p>
+
+<hr />
+
+<h1 id="https-everywhere">Https Everywhere</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://firefox.com" data-fancybox-group="group:travel">
+  
+    <img class="fig-img" src="http://192.168.0.24:8000/images/privacy-part1/HTTPS_Everywhere_icon.svg.png" style="width: 300px;height: 300px;">
+  
+    </a>
+  
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>Https Everywhere est un plugging firefox forcant à utiliser la version sécurisé des sites que vous visitez. Si la version Http et Https sont disponible votre navigateur va utiliser la version Https. Https chiffre vos communications masquant ainsi à un attaquant les données que vous envoyez.</p>
+
+<hr />
+
+<h1 id="ghostery">Ghostery</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://firefox.com" data-fancybox-group="group:travel">
+  
+    <img class="fig-img" src="http://192.168.0.24:8000/images/privacy-part1/ghostery.png" style="width: 300px;height: 300px;">
+  
+    </a>
+  
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>Ghostery est lui aussi un plugging pour firefox, il vous permet de blocker les publicités mais aussi les trackeurs et les mouchards. Les mouchards et les trackeurs sont des technologies développé dans le but d&rsquo;espionner votre comportement et vos actions quand vous visitez un site web. D&rsquo;après une étude les mouchards de google sont présent sur <sup>2</sup>&frasl;<sub>3</sub> des sites que vous visitez.</p>
+
+<p>Allez faire un tour sur ce <a href="https://clickclickclick.click/#edba862411c0a697c5fb617044084015">site</a> pour y découvrir à quel point nous sommes traqué sur internet, cela peut paraitre très perturbant.</p>
+
+<hr />
+
+<h1 id="les-mots-de-passe">Les mots de passe</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://firefox.com" data-fancybox-group="group:travel">
+  
+    <img class="fig-img" src="http://192.168.0.24:8000/images/privacy-part1/keychain.png" style="width: 300px;height: 300px;">
+  
+    </a>
+  
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>Je vous invite à taper dans DuckDuckGo &ldquo;The 25 Most Common Passwords of 20178&rdquo;. J&rsquo;espère que l&rsquo;un de vos mot de passe ne s&rsquo;y trouve pas. Il existe de nombreux outils pour bruteforcer (essayer plein de combinaisons possible) votre mot de passe, si il n&rsquo;est pas assé complexe en quelques secondes ou quelques heure il peut être deviné. Voici quelques conseils bêtes mais qui pourtant peuvent vous empêcher de vous faire pirater :<br />
+<br/></p>
+
+<ul>
+<li>Utiliser de long mot de passe tel que des phrases ou suite de mots</li>
+<li>Mixer chiffres, lettres, majuscules et caractères spéciaux</li>
+<li>N&rsquo;utiliser pas d&rsquo;information personnel tel que la date de naissance</li>
+</ul>
+
+<p>Ce qui peut donner : <span class="highlight-text red">Cheval-Canapé-KouignAmann-5632</span>. En utilisant 3 mots qui n&rsquo;ont rien en communs mais dont vous allez vous rapeler plus un chiffre vous augmenter la difficulter qu&rsquo;un attaquant aura à deviner votre mot de passe.</p>
+
+<p>Je vous invite aussi à aller faire un tour sur ce <a href="https://haveibeenpwned.com">site</a> et d&rsquo;y rentrer votre adresse mail. Vous verrez ensuite si l&rsquo;adresse mail que vous utilisez est contenu dans des bases de données qui se sont faites piratées. Si c&rsquo;est le cas changez votre mot de passe immédiatement.</p>
+
+<hr />
+
+<h1 id="navigation-privé">Navigation privé</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure center" >
+  
+    <a class="fancybox" href="https://firefox.com" data-fancybox-group="group:travel">
+  
+    <img class="fig-img" src="http://192.168.0.24:8000/images/privacy-part1/incognito.jpg" style="width: 300px;height: 300px;">
+  
+    </a>
+  
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>Cette fois pas d&rsquo;outil mais juste une clarification. La seule chose que la navigation privé fait, c&rsquo;est de ne pas enrigistrer votre historique et vos cookies. Cependant cela n&rsquo;empeche toujours pas les sites que vous visitez ou le moteur de recherche que vous utilisez de vous espionner et de vous identifier. C&rsquo;est pour ça qu&rsquo;il est important d&rsquo;utiliser un moteur de recherche qui ne vous traque pas (DuckDuckGo).</p>
+
+<p>La navigation privé n&rsquo;est pas privé, si vous n&rsquo;êtes toujours pas convaincu allez faire un tour sur ce <a href="https://www.nothingprivate.ml/">site</a></p>
+
+<hr />
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="http://192.168.0.24:8000/tags/privacy/">privacy</a>
+
+  <a class="tag tag--primary tag--small" href="http://192.168.0.24:8000/tags/duckduckgo/">duckduckgo</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://192.168.0.24:8000/2015/06/welcome-to-tranquilpeak-0.4.4-beta/" data-tooltip="Welcome to Tranquilpeak 0.4.4-BETA">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Hugo VINCENT. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://192.168.0.24:8000/2015/06/welcome-to-tranquilpeak-0.4.4-beta/" data-tooltip="Welcome to Tranquilpeak 0.4.4-BETA">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F192.168.0.24%3A8000%2F2018%2F12%2Fpart-1-get-back-your-privacy%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2F192.168.0.24%3A8000%2F2018%2F12%2Fpart-1-get-back-your-privacy%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="http://192.168.0.24:8000/images/profil.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Hugo VINCENT</h4>
+    
+      <div id="about-card-bio">Student in computer security</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Student at INSA / SIF master
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        France
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/">
+                <h3 class="media-heading">Part 1 : Get back your privacy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Introduction Savez vous que google lit vos emails, que google traque votre position à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2015/06/welcome-to-tranquilpeak-0.4.4-beta/">
+                <h3 class="media-heading">Welcome to Tranquilpeak 0.4.4-BETA</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Tranquilpeak is a gorgeous responsive theme for Hugo blog framework. It has many features and integrated services to improve user experience.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2015/06/who-is-using-tranquilpeak-hugo-theme/">
+                <h3 class="media-heading">Who&#39;s using Tranquilpeak Hugo Theme</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Here you can find a list of the blogs that use Tranquilpeak theme, with different styles and customizations.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2015/05/elements-showcase/">
+                <h3 class="media-heading">Elements showcase</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Check out how Tranquilpeak theme display well HTML elements (title, paragraph, blockquote, table and more..). It&rsquo;s simple and elegant.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2015/03/highlighted-code-showcase/">
+                <h3 class="media-heading">highlighted code showcase</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Tranquilpeak Hugo theme have its own theme to highlight source code. It&rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2014/10/tags-plugins-showcase/">
+                <h3 class="media-heading">Tags plugins showcase</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is used to show how tag plugins are displayed. See <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags">docs</a> for more info.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2014/08/hidden-social-section-showcase/">
+                <h3 class="media-heading">Hidden social section showcase</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is used to show how a site looks if the social section is hidden.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2014/08/hidden-tag-section-showcase/">
+                <h3 class="media-heading">Hidden tag section showcase</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is used to show how a site looks if the tag section is hidden.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2014/08/hidden-pagination-showcase/">
+                <h3 class="media-heading">Hidden pagination showcase</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is used to show how a site looks if the pagination is hidden.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://192.168.0.24:8000/2013/10/chinese-test/">
+                <h3 class="media-heading">中文測試</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2013
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This is a chinese test post to show you how chinese is displayed.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         11 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://192.168.0.24:8000/images/DSC09319.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="http://192.168.0.24:8000/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/192.168.0.24:8000\/2018\/12\/part-1-get-back-your-privacy\/';
+          
+            this.page.identifier = '\/2018\/12\/part-1-get-back-your-privacy\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

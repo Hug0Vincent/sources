@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Duckduckgo on Hugo</title>
+    <link>http://192.168.0.24:8000/tags/duckduckgo/</link>
+    <description>Recent content in Duckduckgo on Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-en</language>
+    <lastBuildDate>Sun, 09 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://192.168.0.24:8000/tags/duckduckgo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Part 1 : Get back your privacy</title>
+      <link>http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/</link>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://192.168.0.24:8000/2018/12/part-1-get-back-your-privacy/</guid>
+      <description>Introduction Savez vous que google lit vos emails, que google traque votre position à votre insu, ou encore que tous les sites internet que vous visitez traque vos fais et geste sur internet ? Il existe pourtant des moyens très simple pour vous protéger. Dans cette série de 3 articles accécible pour tous je parlerai de différents outils permettant de rester anonyme sur internet tout en vous protégant contre des personnes mal intentionnées ou des virus.</description>
+    </item>
+    
+  </channel>
+</rss>
