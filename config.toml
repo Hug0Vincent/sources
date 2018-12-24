@@ -12,7 +12,7 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "http://192.168.0.24:8000/"
+baseURL = "https://hug0vincent.github.io/"
 languageCode = "en-en"
 defaultContentLanguage = "en-us"
 title = "Hugo"
