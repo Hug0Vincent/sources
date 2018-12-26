@@ -51,6 +51,7 @@ I downloaded the last Debian [release](https://cdimage.debian.org/debian-cd/curr
 
 {{< codeblock lang="bash"  >}}
 $ uname -a
+Linux santa 4.9.0-8-amd64 #1 SMP Debian 4.9.130-2 (2018-10-27) x86_64 GNU/Linux
 {{< /codeblock >}}
 
 
