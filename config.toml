@@ -18,7 +18,7 @@ defaultContentLanguage = "en-us"
 title = "Hugo"
 theme = "tranquilpeak"
 disqusShortname = "https-hug0vincent-github-io"
-googleAnalytics = "UA-131397292-1"
+#googleAnalytics = "UA-131397292-1"
 paginate = 7
 canonifyurls = true
 
