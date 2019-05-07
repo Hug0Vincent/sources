@@ -13,6 +13,7 @@ keywords:
 coverImage: /images/inshack-2019/bg.png
 coverSize: full
 coverMeta: in
+metaAlignment: center
 autoThumbnailImage: false
 summary : "Write-up about the challenge gimme-your-shell from the inshack-2019 CTF."
 ---
