@@ -23,7 +23,7 @@ summary : "Write-up about the challenge gimme-your-shell from the inshack-2019 C
 
 # TL;DR
 
-This is a remote buffer overflow challenge, there is no protection on the binary but ASLR is enable on the remote server. I redirect the execution flow to write my shellcode to a controled area, then jump to it and execute it.
+This is a remote buffer overflow challenge, there is no protection on the binary but ASLR is enable on the remote server. I redirected the execution flow to write my shellcode to a controled area, then jump to it and execute it.
 
 # Getting informations
 
@@ -31,7 +31,7 @@ First I looked at the protections on the binary :
 
 {{< image classes="fancybox fig-100 center" src="/images/inshack-2019/protections.png" thumbnail="/images/inshack-2019/protections.png" >}}
 
-No protections are enabled but it's a remote challenge and we can assume that the ASLR is enabled on the remote server. Let keep that in mind and try to run the binary. 
+No protections is enabled but it's a remote challenge and we can assume that the ASLR is enabled on the remote server. Let keep that in mind and try to run the binary. 
 
 {{< image classes="fancybox fig-100" src="/images/inshack-2019/crash.png" thumbnail="/images/inshack-2019/crash.png" >}}
 
@@ -39,7 +39,7 @@ The program crash when the input is to big. The binary is not stripped which mea
 
 {{< image classes="fancybox fig-100" src="/images/inshack-2019/ghidra.png" thumbnail="/images/inshack-2019/ghidra.png" >}}
 
-# road to the exploit
+# Road to the exploit
 
 Since ASLR is randomizing the stack addresses we can't find the address of our payload and jump to it. We could try to leak an address of libc and perform a ret2libc but I didn't use this technique because it's an 64 bits binary and there is no easy way to control the register {{< hl-text orange >}}rdi{{< /hl-text >}} which is used to pass the first arguments. So without a gadget to properly set {{< hl-text orange >}}rdi{{< /hl-text >}} we can't make a call to {{< hl-text orange >}}puts{{< /hl-text >}} with the address of {{< hl-text orange >}}gets{{< /hl-text >}} as parameter to leak it's address. But remember the NX bit is not set, here is a definition from wikipedia :
 
@@ -57,7 +57,7 @@ We can see from the code in ghidra that the parameter of the {{< hl-text orange 
 00400577 e8 d4 fe        CALL       gets
 {{< /codeblock >}}
 
-By chance there is a gadget which allow us to set a craft value in {{< hl-text orange >}}rbp{{< /hl-text >}} :
+By chance there is a [gadget](https://thinkloveshare.com/en/hacking/pwn_3of4_saperliropette/) which allow us to set a crafted value in {{< hl-text orange >}}rbp{{< /hl-text >}} :
 
 {{< codeblock lang="assembly"  >}}
 ROPgadget --binary weak
@@ -139,6 +139,7 @@ ssh -i ../key.pub -p 2225 user@gimme-your-shell.ctf.insecurity-insa.fr
 # Flag
 
 {{< hl-text red >}}INSA{YoU_h4v3_a_b34uT1fUL_Sh33lc0d3}{{< /hl-text >}} 
+
 
 
 
