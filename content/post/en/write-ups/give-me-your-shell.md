@@ -49,7 +49,7 @@ An operating system with support for the NX bit may mark certain areas of memory
 
 So if it's disable we can write data and then execute what we write if it's a valid set of instructions. Now there are 2 problems to solve, where to write the shellcode and how to jump there. 
 
-We can see from the code in ghidra that the parameter of the {{< hl-text orange >}}gets{{< /hl-text >}} function depend of {{< hl-text orange >}}rdp{{< /hl-text >}}
+We can see from the code in ghidra that the parameter of the {{< hl-text orange >}}gets{{< /hl-text >}} function depend of {{< hl-text orange >}}rbp{{< /hl-text >}}
 
 {{< codeblock lang="assembly"  >}}
 00400570 48 8d 45 f0     LEA        RAX=>local_18,[RBP + -0x10]

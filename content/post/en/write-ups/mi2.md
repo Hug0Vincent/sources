@@ -15,6 +15,7 @@ keywords:
 coverImage: /images/mi2/bg.png
 coverSize: full
 coverMeta: in
+metaAlignment: center
 autoThumbnailImage: false
 summary : "Write-up about the challenge mission impossible 2 from the santhacklaus CTF."
 ---

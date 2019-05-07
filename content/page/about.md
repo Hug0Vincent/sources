@@ -11,6 +11,7 @@ showSocial: false
 showDate: false
 comments: false
 showActions: false
+metaAlignment: center
 
 ---
 

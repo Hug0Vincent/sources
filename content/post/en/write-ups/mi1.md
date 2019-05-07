@@ -13,6 +13,7 @@ keywords:
 coverImage: /images/mi1/bg.png
 coverSize: full
 coverMeta: in
+metaAlignment: center
 autoThumbnailImage: false
 summary : "Write-up about the challenge mission impossible 1 from the santhacklaus CTF."
 ---
