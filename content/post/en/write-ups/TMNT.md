@@ -3,7 +3,7 @@ title: "TMNT"
 date: 2019-10-09T16:39:53+02:00
 categories:
 - write-ups
-- AperiCtf
+- aperi-ctf
 tags:
 - web
 - xss

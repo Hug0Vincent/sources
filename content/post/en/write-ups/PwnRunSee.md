@@ -3,7 +3,7 @@ title: "Pwn Run See (part 1 & 2)"
 date: 2019-10-09T11:39:54+02:00
 categories:
 - write-ups
-- AperiCtf
+- aperi-ctf
 tags:
 - pwn
 - UAF
