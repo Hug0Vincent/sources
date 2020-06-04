@@ -36,7 +36,7 @@ A custom kernel module was vulnerable to a buffer overflow, with a small ropchai
 
 I'm not a Linux kernel expert, everything might not be 100% correct, but I'll do my best to summarize what I understood.
 
-We were provided with 3 files, a bzImage, an iniramfs and a custom kernel module. I tried to run everything locally with qemu, but It didn't work the provided initramfs was broken, so let run the virtual machine on the server and see what happen.
+We were provided with 3 files, a bzImage, an iniramfs and a custom kernel module. I tried to run everything locally with qemu, but It didn’t work as the provided initramfs was broken, so let's run the virtual machine on the server and see what happens.
 
 
 {{< image classes="fancybox center clear" src="/images/HelloRootkitty/root.png" thumbnail="/images/HelloRootkitty/root.png" >}}
@@ -69,17 +69,17 @@ Let's load the kernel module inside {{< hl-text orange >}}Ghidra{{< /hl-text >}}
 
 </br>
 
-The module replaces the addresses of the original {{< hl-text orange >}}sys_getdents64{{< /hl-text >}}, {{< hl-text orange >}}sys_getdents{{< /hl-text >}} and {{< hl-text orange >}}sys_lstat{{< /hl-text >}} addresses by custom addresses which are function inside the module. The module is hooking legit function by a custom one. From the Linux man page we can read:
+The module replaces the addresses of the original {{< hl-text orange >}}sys_getdents64{{< /hl-text >}}, {{< hl-text orange >}}sys_getdents{{< /hl-text >}} and {{< hl-text orange >}}sys_lstat{{< /hl-text >}} addresses by custom addresses which are functions inside the module. The module is hooking legit function by a custom one. From the Linux man page we can read:
 
 {{< pullquote >}}
 getdents, getdents64 - get directory entries
 {{< /pullquote >}}
 
-When we want to list entry in a directory this syscall is made and instead of the original one the Linux kernel will call the custom one. Here is a part of the custom sys_getdents function:
+When we want to list entries in a directory this syscall is made and instead of the original one the Linux kernel will call the custom one. Here is a part of the custom sys_getdents function:
 
 {{< image classes="fancybox center clear" src="/images/HelloRootkitty/vuln.png" thumbnail="/images/HelloRootkitty/vuln.png" >}}
 
-We can spot a {{< hl-text orange >}}strcpy{{< /hl-text >}} with only 2 parameters which mean a buffer overflow if we can control the second parameter. The second parameter comes from the second parameter of the sys_getdents function. Once again from the Linux man page:
+We can spot a {{< hl-text orange >}}strcpy{{< /hl-text >}} with only 2 parameters which means a buffer overflow if we can control the second parameter. The second parameter comes from the second parameter of the sys_getdents function. Once again from the Linux man page:
 
 {{< codeblock lang="c"  >}}
 int getdents(unsigned int fd, struct linux_dirent *dirp,
@@ -106,7 +106,7 @@ struct linux_dirent {
 }
 {{< /codeblock >}}
 
-So at the offset 0x12 of a linux_dirent structure we can find the {{< hl-text orange >}}d_name{{< /hl-text >}} parameter. The little loop before the strcpy check that the name of the file start by {{< hl-text orange >}}ecsc_flag_{{< /hl-text >}}. We can try a buffer overflow with a long filename starting by ecsc\_flag\_ and see what append:
+So at the offset 0x12 of a linux_dirent structure we can find the {{< hl-text orange >}}d_name{{< /hl-text >}} parameter. The little loop before the strcpy checks that the name of the file starts by {{< hl-text orange >}}ecsc_flag_{{< /hl-text >}}. We can try a buffer overflow with a long filename starting by ecsc\_flag\_ and see what append:
 
 {{< codeblock lang="bash"  >}}
 ~ $ touch ecsc_flag_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -140,17 +140,17 @@ A kernel stack trace with {{< hl-text orange >}}RIP: 0010:0x6161616161616161{{< 
 
 # Ropping through hell
 
-I though that it would be easy from here, but I actually spent a lot of time finding a good strategy to execute some privileges actions. My idea was initially to pop a root shell, let see the different steps to get there. First I tried to map a userland region as rwx and execute a custom shellcode from here, but I don't know why It didn't work. So I decided to make a ropchain. 
+I though that it would be easy from here, but I actually spent a lot of time finding a good strategy to execute some privileged actions. My idea was initially to pop a root shell, let's see the different steps to get there. First I tried to map a userland region as rwx and execute a custom shellcode from there, but I don't know why It didn't work. So I decided to build a ropchain. 
 
-To elevate our privileges in kernel-land we need to make a call to this functions:
+In order to elevate our privileges, we have to call these functions in kernel-land:
 
 {{< codeblock lang="c"  >}}
 commit_creds(prepare_kernel_cred(0));
 {{< /codeblock >}}
 
-This will grant us root privileges which mean that we will theoretically be able to do whatever we want on the system. To call these functions we need to know their addresses, {{< hl-text orange >}}kaslr{{< /hl-text >}} is enabled, but we can read {{< hl-text orange >}}/proc/kallsym{{< /hl-text >}} which hold all the kernel function addresses including the base offset, thus defeating kaslr.
+This will grant us root privileges which means that we will theoretically be able to do whatever we want on the system. To call these functions we need to know their addresses, {{< hl-text orange >}}kaslr{{< /hl-text >}} is enabled, but we can read {{< hl-text orange >}}/proc/kallsym{{< /hl-text >}} which holds all the kernel function addresses and their current offset, thus defeating kaslr.
 
-Here is a usefull function to get kernel addresses base on the symbol name :
+Here is a useful function to get kernel addresses base on the symbol name :
 
 {{< codeblock lang="c"  >}}
 unsigned long get_kernel_sym(char *name) {
@@ -184,7 +184,7 @@ unsigned long get_kernel_sym(char *name) {
 }
 {{< /codeblock >}}
 
-We can now compute the addresses of those functions, but we need gadgets, and there are not so many gadgets inside the kernel module. To get more gadgets I extracted the vmlinux from the bzImage with this [tool](https://github.com/torvalds/linux/blob/master/scripts/extract-vmlinux). Then we can launch ROPgadet on the vmlinux and get a lot of gadgets. Here is the beginning of my ropchain:
+We can now compute the addresses of those functions, but we need gadgets, and there are not so many gadgets inside the kernel module. To get more gadgets I extracted the vmlinux from the bzImage with this [tool](https://github.com/torvalds/linux/blob/master/scripts/extract-vmlinux). Then we can launch ROPgadet on the vmlinux and get a lot of them. Here is the beginning of my ropchain:
 
 {{< codeblock lang="c"  >}}
 int main() {
@@ -222,9 +222,9 @@ int main() {
     [...]
 {{< /codeblock >}}
 
-After those gadget we will get root privileges, my naive idea was just to go back to a userland function and execute system("/bin/sh") but it didn't work I triggered segfault and I could only execute one printf and only one after that segfault. 
+After those gadget are executed, we will get root privileges. My naive idea was just to go back to a userland function and execute system("/bin/sh") but it didn't work as expected. I triggered segfault and I could only execute one printf then it would failed with a segfault. 
 
-I successfully execute a printf which means that I still can execute code but not everything. I tried to execute a custom minimal shellcode to call execve('/bin/sh') but without success. I was probably messing up with the kernel stack so I either had to restore it or find another solution. I tried in vain to restore it and I also tried to make a stack pivot but no sucess.
+I successfully executed a printf which means that I still can execute code but not for long. I tried to execute a custom minimal shellcode to call execve('/bin/sh') but without success. I was probably messing up with the kernel stack so I either had to restore it or find another solution. I tried in vain to restore it and I also tried to make a stack pivot but without sucess.
 
 I also tried to execute a call to exit after the ropchain, it worked but printf and exit are pretty useless in our case. But something is happening, we can still make at least one syscall, what can we do with one sycall ? 
 
@@ -244,7 +244,7 @@ Then I created a file starting by ecsc\_flag\_ inside the root folder to get the
 
 # Final thought
 
-I saw other write-ups where people simply unload the kernel module and then print the flag which is more simple and less painful. I really wanted a root shell but I don't know why It didn't work since there is no SMEP or SMAP protection if someone has any idea please send me a message :)
+I saw other write-ups where people simply unloaded the kernel module and then printed the flag which is simpler and less painful. I really wanted a root shell but I don't know why It didn't work since there is no SMEP or SMAP protection if someone has any idea please send me a message :)
 
 # Full exploit
 
